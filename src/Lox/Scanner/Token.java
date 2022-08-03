@@ -1,4 +1,4 @@
-package Scanner;
+package Lox.Scanner;
 
 public class Token {
     final TokenType type;

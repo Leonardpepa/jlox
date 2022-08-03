@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2f3d31-ce49-4c2e-8734-7cae4e441567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Scanner/Scanner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Scanner/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Scanner/TokenType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Lox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scanner/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Scanner/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scanner/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Scanner/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scanner/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Scanner/TokenType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +39,26 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lox.Lox" />
+      <module name="JLOX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lox.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Lox" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
