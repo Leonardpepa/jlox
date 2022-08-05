@@ -4,7 +4,7 @@ import Lox.Scanner.Token;
 
 import java.util.List;
 
-class Call extends Expr {
+public class Call extends Expr {
     final Expr callee;
     final Token paren;
     final List<Expr> arguments;
@@ -16,7 +16,7 @@ class Call extends Expr {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitCallExpr(this);
     }
 }

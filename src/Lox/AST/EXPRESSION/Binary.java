@@ -2,7 +2,7 @@ package Lox.AST.EXPRESSION;
 
 import Lox.Scanner.Token;
 
-class Binary extends Expr {
+public class Binary extends Expr {
     final Expr left;
     final Token operator;
     final Expr right;
@@ -14,7 +14,7 @@ class Binary extends Expr {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitBinaryExpr(this);
     }
 }

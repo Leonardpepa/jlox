@@ -1,6 +1,6 @@
 package Lox.AST.EXPRESSION;
 
-class Grouping extends Expr {
+public class Grouping extends Expr {
     final Expr expression;
 
     Grouping(Expr expression) {
@@ -8,7 +8,7 @@ class Grouping extends Expr {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitGroupingExpr(this);
     }
 }

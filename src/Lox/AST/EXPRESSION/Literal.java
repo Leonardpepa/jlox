@@ -1,6 +1,6 @@
 package Lox.AST.EXPRESSION;
 
-class Literal extends Expr {
+public class Literal extends Expr {
     final Object value;
 
     Literal(Object value) {
@@ -8,7 +8,7 @@ class Literal extends Expr {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitLiteralExpr(this);
     }
 }

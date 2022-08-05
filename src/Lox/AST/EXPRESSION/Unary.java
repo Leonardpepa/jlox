@@ -2,7 +2,7 @@ package Lox.AST.EXPRESSION;
 
 import Lox.Scanner.Token;
 
-class Unary extends Expr {
+public class Unary extends Expr {
     final Token operator;
     final Expr right;
 
@@ -12,7 +12,7 @@ class Unary extends Expr {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitUnaryExpr(this);
     }
 }

@@ -2,7 +2,7 @@ package Lox.AST.EXPRESSION;
 
 import Lox.Scanner.Token;
 
-class Super extends Expr {
+public class Super extends Expr {
     final Token keyword;
     final Token method;
 
@@ -12,7 +12,7 @@ class Super extends Expr {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitSuperExpr(this);
     }
 }

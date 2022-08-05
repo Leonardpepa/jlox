@@ -2,7 +2,7 @@ package Lox.AST.EXPRESSION;
 
 import Lox.Scanner.Token;
 
-class Assign extends Expr {
+public class Assign extends Expr {
     final Token name;
     final Expr value;
 
@@ -12,7 +12,7 @@ class Assign extends Expr {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitAssignExpr(this);
     }
 }

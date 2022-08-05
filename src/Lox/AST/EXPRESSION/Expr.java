@@ -2,11 +2,11 @@ package Lox.AST.EXPRESSION;
 
 import Lox.Scanner.Token;
 
-abstract class Expr {
+public abstract class Expr {
     // Nested Expr classes here...
-    abstract <R> R accept(Visitor<R> visitor);
+     public abstract <R> R accept(Visitor<R> visitor);
 
-    interface Visitor<R> {
+    public interface Visitor<R> {
         R visitAssignExpr(Assign expr);
 
         R visitBinaryExpr(Binary expr);

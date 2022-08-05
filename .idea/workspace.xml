@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2f3d31-ce49-4c2e-8734-7cae4e441567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Logical.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Set.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/AstPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Assign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Assign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Binary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Binary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Call.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Call.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Expr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Get.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Get.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Grouping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Grouping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Literal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Logical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Logical.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Set.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Super.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Super.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/This.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/This.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Unary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Variable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
