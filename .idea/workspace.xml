@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2f3d31-ce49-4c2e-8734-7cae4e441567" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lox/AST/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/Expr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Assign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Binary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Call.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Get.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Grouping.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Literal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Super.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/This.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Unary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Expr.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +45,11 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="Lox.AST.EXPRESSION" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lox.Lox" />
