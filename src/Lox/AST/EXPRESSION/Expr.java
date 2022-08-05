@@ -1,5 +1,7 @@
 package Lox.AST.EXPRESSION;
 
+import Lox.Scanner.Token;
+
 abstract class Expr {
     // Nested Expr classes here...
     abstract <R> R accept(Visitor<R> visitor);
@@ -29,6 +31,5 @@ abstract class Expr {
 
         R visitVariableExpr(Variable expr);
     }
-
 
 }
