@@ -3,8 +3,8 @@ package Lox.AST.EXPRESSION;
 import Lox.Scanner.Token;
 
 public class Unary extends Expr {
-    final Token operator;
-    final Expr right;
+    public final Token operator;
+    public final Expr right;
 
     Unary(Token operator, Expr right) {
         this.operator = operator;

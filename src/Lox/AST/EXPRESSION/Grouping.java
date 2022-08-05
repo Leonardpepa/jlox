@@ -1,7 +1,7 @@
 package Lox.AST.EXPRESSION;
 
 public class Grouping extends Expr {
-    final Expr expression;
+    public final Expr expression;
 
     Grouping(Expr expression) {
         this.expression = expression;
