@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Grouping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Grouping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Literal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/EXPRESSION/Unary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lox/Scanner/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Scanner/Token.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
