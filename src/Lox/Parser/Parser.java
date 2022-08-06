@@ -1,10 +1,13 @@
 package Lox.Parser;
 
 import Lox.AST.EXPRESSION.*;
+import Lox.AST.Statments.*;
+import Lox.AST.Statments.Stmt;
 import Lox.Lox;
 import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static Lox.Scanner.TokenType.*;
@@ -17,12 +20,29 @@ public class Parser {
         this.tokens = tokens;
     }
 
-    public Expr parse() {
-        try {
-            return expression();
-        } catch (ParseError error) {
-            return null;
+    public List<Stmt> parse() {
+        List<Stmt> statements = new ArrayList<>();
+        while (!isAtEnd()) {
+            statements.add(statement());
         }
+        return statements;
+    }
+
+    private Stmt statement() {
+        if (match(PRINT)) return printStatement();
+        return expressionStatement();
+    }
+
+    private Stmt printStatement() {
+        Expr value = expression();
+        consume(SEMICOLON, "Expect ';' after value.");
+        return new Print(value);
+    }
+
+    private Stmt expressionStatement() {
+        Expr expr = expression();
+        consume(SEMICOLON, "Expect ';' after expression.");
+        return new Expression(expr);
     }
 
     private Expr expression() {

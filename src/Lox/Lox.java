@@ -1,6 +1,7 @@
 package Lox;
 
 import Lox.AST.EXPRESSION.Expr;
+import Lox.AST.Statments.Stmt;
 import Lox.Error.RuntimeError;
 import Lox.Interpreter.Interpreter;
 import Lox.Parser.Parser;
@@ -57,10 +58,10 @@ public class Lox {
         List<Token> tokens = scanner.scanTokens();
 
         Parser parser = new Parser(tokens);
-        Expr expression = parser.parse();
+        List<Stmt> statements = parser.parse();
         // Stop if there was a syntax error.
         if (hadError) return;
-        interpreter.interpret(expression);
+        interpreter.interpret(statements);
     }
 
     public static void error(int line, String message) {

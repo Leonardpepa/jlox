@@ -12,7 +12,7 @@ public class While extends Stmt {
     }
 
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitWhileStmt(this);
     }
 }

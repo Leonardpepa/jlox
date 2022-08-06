@@ -1,10 +1,10 @@
 package Lox.AST.Statments;
 
 public abstract class Stmt {
-    abstract <R> R accept(Visitor<R> visitor);
+    public abstract <R> R accept(Visitor<R> visitor);
     // Nested Stmt classes here...
 
-    interface Visitor<R> {
+    public interface Visitor<R> {
         R visitBlockStmt(Block stmt);
 
         R visitClassStmt(Class stmt);

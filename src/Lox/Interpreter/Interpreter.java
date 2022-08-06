@@ -1,16 +1,21 @@
 package Lox.Interpreter;
 
 import Lox.AST.EXPRESSION.*;
+import Lox.AST.Statments.*;
+import Lox.AST.Statments.Class;
 import Lox.Error.RuntimeError;
 import Lox.Scanner.Token;
 import Lox.Utils.Utils;
 
-public class Interpreter implements Expr.Visitor<Object> {
+import java.util.List;
 
-    public void interpret(Expr expression) {
+public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
+
+    public void interpret(List<Stmt> statements) {
         try {
-            Object value = evaluate(expression);
-            System.out.println(Utils.stringify(value));
+            for (Stmt statement : statements) {
+                execute(statement);
+            }
         } catch (RuntimeError error) {
             Lox.Lox.runtimeError(error);
         }
@@ -155,5 +160,58 @@ public class Interpreter implements Expr.Visitor<Object> {
         if (left instanceof Double && right instanceof Double) return;
 
         throw new RuntimeError(operator, "Operands must be numbers.");
+    }
+
+    // interpret statments
+    @Override
+    public Void visitBlockStmt(Block stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitClassStmt(Class stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitExpressionStmt(Expression stmt) {
+        evaluate(stmt.expression);
+        return null;
+    }
+
+    @Override
+    public Void visitFunctionStmt(Function stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitIfStmt(If stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitPrintStmt(Print stmt) {
+        Object value = evaluate(stmt.expression);
+        System.out.println(Utils.stringify(value));
+        return null;
+    }
+
+    @Override
+    public Void visitReturnStmt(Return stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitVarStmt(Var stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitWhileStmt(While stmt) {
+        return null;
+    }
+
+    private void execute(Stmt stmt) {
+        stmt.accept(this);
     }
 }
