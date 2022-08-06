@@ -39,6 +39,11 @@ public class Interpreter implements Expr.Visitor<Object> {
                 if (left instanceof String && right instanceof String) {
                     return left + (String) right;
                 }
+//                if (left instanceof String || right instanceof String){
+//                    if (left.toString().endsWith(".0")) left = left.toString().substring(0, left.toString().length() - 2);
+//                    if (right.toString().endsWith(".0")) right = right.toString().substring(0, right.toString().length() - 2);
+//                    return left.toString().concat(right.toString());
+//                }
                 throw new RuntimeError(expr.operator, "Operands must be two numbers or two strings.");
                 // comparison
             case GREATER:
