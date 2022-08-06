@@ -1,6 +1,7 @@
 package Lox.Parser;
 
 import Lox.AST.EXPRESSION.*;
+import Lox.Lox;
 import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import static Lox.Scanner.TokenType.*;
 
 public class Parser {
+    private static class ParseError extends RuntimeException {}
     private final List<Token> tokens;
     private int current = 0;
     public Parser(List<Token> tokens) {
@@ -83,8 +85,6 @@ public class Parser {
         throw new Error("Unreachable");
     }
 
-    private void consume(TokenType rightParen, String s) {
-    }
 
     private boolean match(TokenType... types) {
         for (TokenType type : types) {
@@ -101,6 +101,11 @@ public class Parser {
         return peek().type == type;
     }
 
+    private Token consume(TokenType type, String message) {
+        if (check(type)) return advance();
+        throw error(peek(), message);
+    }
+
     private Token advance() {
         if (!isAtEnd()) current++;
         return previous();
@@ -114,6 +119,11 @@ public class Parser {
     }
     private Token previous() {
         return tokens.get(current - 1);
+    }
+
+    private ParseError error(Token token, String message) {
+        Lox.error(token, message);
+        return new ParseError();
     }
 
 }

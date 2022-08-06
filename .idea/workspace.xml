@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2f3d31-ce49-4c2e-8734-7cae4e441567" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Lox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/Parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/Scanner/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Scanner/Token.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
