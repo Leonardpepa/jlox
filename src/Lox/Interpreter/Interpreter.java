@@ -2,7 +2,7 @@ package Lox.Interpreter;
 
 import Lox.AST.EXPRESSION.*;
 
-class Interpreter implements Expr.Visitor<Object> {
+public class Interpreter implements Expr.Visitor<Object> {
     @Override
     public Object visitAssignExpr(Assign expr) {
         return null;

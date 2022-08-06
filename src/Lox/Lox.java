@@ -2,6 +2,7 @@ package Lox;
 
 import Lox.AST.AstPrinter;
 import Lox.AST.EXPRESSION.*;
+import Lox.Interpreter.Interpreter;
 import Lox.Parser.Parser;
 import Lox.Scanner.Scanner;
 import Lox.Scanner.Token;
@@ -57,6 +58,7 @@ public class Lox {
         // Stop if there was a syntax error.
         if (hadError) return;
         System.out.println(new AstPrinter().print(expression));
+        System.out.println(expression.accept(new Interpreter()));
     }
 
     public static void error(int line, String message) {
