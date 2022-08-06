@@ -82,7 +82,7 @@ public class Parser {
             consume(RIGHT_PAREN, "Expect ')' after expression.");
             return new Grouping(expr);
         }
-        throw new Error("Unreachable");
+        throw error(peek(), "Expect expression.");
     }
 
 
