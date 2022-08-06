@@ -29,6 +29,9 @@ public class Interpreter implements Expr.Visitor<Object> {
             case MINUS:
                 return (double) left - (double) right;
             case SLASH:
+//                if((double) right == 0){
+//                    throw new RuntimeError(expr.operator, "Runtime Error | Division by 0");
+//                }
                 return (double) left / (double) right;
             case STAR:
                 return (double) left * (double) right;
