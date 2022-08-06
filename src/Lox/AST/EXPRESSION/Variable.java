@@ -3,9 +3,9 @@ package Lox.AST.EXPRESSION;
 import Lox.Scanner.Token;
 
 public class Variable extends Expr {
-    final Token name;
+    public final Token name;
 
-    Variable(Token name) {
+    public Variable(Token name) {
         this.name = name;
     }
 
