@@ -1,9 +1,9 @@
 package Lox.Scanner;
 
 public class Token {
-    final TokenType type;
+    public final TokenType type;
     public final String lexeme;
-    final Object literal;
+    public final Object literal;
     final int line;
     public Token(TokenType type, String lexeme, Object literal, int line) {
         this.type = type;
