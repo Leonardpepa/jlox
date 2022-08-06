@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2f3d31-ce49-4c2e-8734-7cae4e441567" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Lox/Interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Interpreter/Interpreter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Block.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Class.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Expression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Function.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/If.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Print.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Return.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Stmt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/Var.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/AST/Statments/While.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +47,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="Lox.AST.Statments" />
       <recent name="Lox.AST.EXPRESSION" />
     </key>
   </component>
