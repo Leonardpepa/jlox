@@ -2,6 +2,7 @@ package Lox;
 
 import Lox.AST.AstPrinter;
 import Lox.AST.EXPRESSION.*;
+import Lox.Parser.Parser;
 import Lox.Scanner.Scanner;
 import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
@@ -17,16 +18,15 @@ import java.util.List;
 public class Lox {
     static boolean hadError = false;
 
-    public static void main(String[] args) {
-        Expr expression = new Binary(
-                new Unary(
-                        new Token(TokenType.MINUS, "-", null, 1),
-                        new Literal(123)),
-                new Token(TokenType.STAR, "*", null, 1),
-                new Grouping(
-                        new Literal(45.67)));
-
-        System.out.println(new AstPrinter().print(expression));
+    public static void main(String[] args) throws IOException {
+        if (args.length > 1) {
+            System.out.println("Usage: jlox [script]");
+            System.exit(64);
+        } else if (args.length == 1) {
+            runFile(args[0]);
+        } else {
+            runPrompt();
+        }
     }
 
     private static void runFile(String path) throws IOException {
@@ -51,10 +51,12 @@ public class Lox {
     private static void run(String source) {
         Scanner scanner = new Scanner(source);
         List<Token> tokens = scanner.scanTokens();
-        // For now, just print the tokens.
-        for (Token token : tokens) {
-            System.out.println(token);
-        }
+
+        Parser parser = new Parser(tokens);
+        Expr expression = parser.parse();
+        // Stop if there was a syntax error.
+        if (hadError) return;
+        System.out.println(new AstPrinter().print(expression));
     }
 
     public static void error(int line, String message) {
