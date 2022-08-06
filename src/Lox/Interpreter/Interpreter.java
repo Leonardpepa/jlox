@@ -1,6 +1,8 @@
 package Lox.Interpreter;
 
 import Lox.AST.EXPRESSION.*;
+import Lox.Error.RuntimeError;
+import Lox.Scanner.Token;
 
 public class Interpreter implements Expr.Visitor<Object> {
     @Override
@@ -26,15 +28,20 @@ public class Interpreter implements Expr.Visitor<Object> {
                 if (left instanceof String && right instanceof String) {
                     return (String)left + (String)right;
                 }
-                break;
+                throw new RuntimeError(expr.operator,
+                        "Operands must be two numbers or two strings.");
             // comparison
             case GREATER:
+                checkNumberOperands(expr.operator, left, right);
                 return (double)left > (double)right;
             case GREATER_EQUAL:
+                checkNumberOperands(expr.operator, left, right);
                 return (double)left >= (double)right;
             case LESS:
+                checkNumberOperands(expr.operator, left, right);
                 return (double)left < (double)right;
             case LESS_EQUAL:
+                checkNumberOperands(expr.operator, left, right);
                 return (double)left <= (double)right;
             // equality
             case BANG_EQUAL: return !isEqual(left, right);
@@ -91,6 +98,7 @@ public class Interpreter implements Expr.Visitor<Object> {
             case BANG:
                 return !isTruthy(right);
             case MINUS:
+                checkNumberOperand(expr.operator, right);
                 return -(double)right;
         }
         // Unreachable.
@@ -116,5 +124,17 @@ public class Interpreter implements Expr.Visitor<Object> {
         if (a == null && b == null) return true;
         if (a == null) return false;
         return a.equals(b);
+    }
+
+    private void checkNumberOperand(Token operator, Object operand) {
+        if (operand instanceof Double) return;
+        throw new RuntimeError(operator, "Operand must be a number.");
+    }
+
+    private void checkNumberOperands(Token operator,
+                                     Object left, Object right) {
+        if (left instanceof Double && right instanceof Double) return;
+
+        throw new RuntimeError(operator, "Operands must be numbers.");
     }
 }
