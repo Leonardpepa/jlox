@@ -3,10 +3,10 @@ package Lox.AST.EXPRESSION;
 import Lox.Scanner.Token;
 
 public class Assign extends Expr {
-    final Token name;
-    final Expr value;
+    public final Token name;
+    public final Expr value;
 
-    Assign(Token name, Expr value) {
+    public Assign(Token name, Expr value) {
         this.name = name;
         this.value = value;
     }
