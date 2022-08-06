@@ -3,8 +3,19 @@ package Lox.Interpreter;
 import Lox.AST.EXPRESSION.*;
 import Lox.Error.RuntimeError;
 import Lox.Scanner.Token;
+import Lox.Utils.Utils;
 
 public class Interpreter implements Expr.Visitor<Object> {
+
+    public void interpret(Expr expression) {
+        try {
+            Object value = evaluate(expression);
+            System.out.println(Utils.stringify(value));
+        } catch (RuntimeError error) {
+            Lox.Lox.runtimeError(error);
+        }
+    }
+
     @Override
     public Object visitAssignExpr(Assign expr) {
         return null;
@@ -16,36 +27,37 @@ public class Interpreter implements Expr.Visitor<Object> {
         Object right = evaluate(expr.right);
         switch (expr.operator.type) {
             case MINUS:
-                return (double)left - (double)right;
+                return (double) left - (double) right;
             case SLASH:
-                return (double)left / (double)right;
+                return (double) left / (double) right;
             case STAR:
-                return (double)left * (double)right;
+                return (double) left * (double) right;
             case PLUS:
                 if (left instanceof Double && right instanceof Double) {
-                    return (double)left + (double)right;
+                    return (double) left + (double) right;
                 }
                 if (left instanceof String && right instanceof String) {
-                    return (String)left + (String)right;
+                    return left + (String) right;
                 }
-                throw new RuntimeError(expr.operator,
-                        "Operands must be two numbers or two strings.");
-            // comparison
+                throw new RuntimeError(expr.operator, "Operands must be two numbers or two strings.");
+                // comparison
             case GREATER:
                 checkNumberOperands(expr.operator, left, right);
-                return (double)left > (double)right;
+                return (double) left > (double) right;
             case GREATER_EQUAL:
                 checkNumberOperands(expr.operator, left, right);
-                return (double)left >= (double)right;
+                return (double) left >= (double) right;
             case LESS:
                 checkNumberOperands(expr.operator, left, right);
-                return (double)left < (double)right;
+                return (double) left < (double) right;
             case LESS_EQUAL:
                 checkNumberOperands(expr.operator, left, right);
-                return (double)left <= (double)right;
+                return (double) left <= (double) right;
             // equality
-            case BANG_EQUAL: return !isEqual(left, right);
-            case EQUAL_EQUAL: return isEqual(left, right);
+            case BANG_EQUAL:
+                return !isEqual(left, right);
+            case EQUAL_EQUAL:
+                return isEqual(left, right);
         }
         // Unreachable.
         return null;
@@ -99,7 +111,7 @@ public class Interpreter implements Expr.Visitor<Object> {
                 return !isTruthy(right);
             case MINUS:
                 checkNumberOperand(expr.operator, right);
-                return -(double)right;
+                return -(double) right;
         }
         // Unreachable.
         return null;
@@ -116,7 +128,7 @@ public class Interpreter implements Expr.Visitor<Object> {
 
     private boolean isTruthy(Object object) {
         if (object == null) return false;
-        if (object instanceof Boolean) return (boolean)object;
+        if (object instanceof Boolean) return (boolean) object;
         return true;
     }
 
@@ -131,8 +143,7 @@ public class Interpreter implements Expr.Visitor<Object> {
         throw new RuntimeError(operator, "Operand must be a number.");
     }
 
-    private void checkNumberOperands(Token operator,
-                                     Object left, Object right) {
+    private void checkNumberOperands(Token operator, Object left, Object right) {
         if (left instanceof Double && right instanceof Double) return;
 
         throw new RuntimeError(operator, "Operands must be numbers.");
