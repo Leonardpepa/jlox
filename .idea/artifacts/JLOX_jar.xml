@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JLOX:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JLOX_jar</output-path>
+    <root id="archive" name="JLOX.jar">
+      <element id="module-output" name="JLOX" />
+    </root>
+  </artifact>
+</component>
