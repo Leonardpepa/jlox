@@ -22,10 +22,10 @@ public class Utils {
         if (object instanceof String) return !((String)object).isEmpty();
         if (object instanceof Number){
             Number nObject = ((Number) object);
-            if (nObject.intValue() == 0 && nObject.floatValue() != 0){
+            if (nObject.longValue() == 0 && nObject.doubleValue() != 0){
                 return true;
             }
-            return nObject.intValue() != 0;
+            return nObject.longValue() != 0;
         }
         return true;
     }
