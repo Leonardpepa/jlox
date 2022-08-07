@@ -19,6 +19,14 @@ public class Utils {
     public static  boolean isTruthy(Object object) {
         if (object == null) return false;
         if (object instanceof Boolean) return (boolean) object;
+        if (object instanceof String) return !((String)object).isEmpty();
+        if (object instanceof Number){
+            Number nObject = ((Number) object);
+            if (nObject.intValue() == 0 && nObject.floatValue() != 0){
+                return true;
+            }
+            return nObject.intValue() != 0;
+        }
         return true;
     }
 
