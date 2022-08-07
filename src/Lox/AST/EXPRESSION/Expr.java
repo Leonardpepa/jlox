@@ -19,7 +19,7 @@ public abstract class Expr {
 
         R visitLiteralExpr(Literal expr);
 
-        R visitLogicalExpr(Expr expr);
+        R visitLogicalExpr(Logical expr);
 
         R visitSetExpr(Expr expr);
 

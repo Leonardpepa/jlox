@@ -40,7 +40,7 @@ public class AstPrinter implements Expr.Visitor<String> {
     }
 
     @Override
-    public String visitLogicalExpr(Expr expr) {
+    public String visitLogicalExpr(Logical expr) {
         return null;
     }
 

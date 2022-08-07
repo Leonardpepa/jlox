@@ -2,8 +2,13 @@ package Lox.AST.EXPRESSION;
 
 import Lox.Scanner.Token;
 
-class Logical extends Expr {
-    Logical(Expr left, Token operator, Expr right) {
+public class Logical extends Expr {
+
+    public final Expr left;
+    public final Token operator;
+    public final Expr right;
+
+    public Logical(Expr left, Token operator, Expr right) {
         this.left = left;
         this.operator = operator;
         this.right = right;
@@ -13,8 +18,4 @@ class Logical extends Expr {
     public <R> R accept(Visitor<R> visitor) {
         return visitor.visitLogicalExpr(this);
     }
-
-    final Expr left;
-    final Token operator;
-    final Expr right;
 }

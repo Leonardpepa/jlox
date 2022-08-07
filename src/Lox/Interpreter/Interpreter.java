@@ -6,6 +6,7 @@ import Lox.AST.Statments.Class;
 import Lox.Enviroment.Environment;
 import Lox.Error.RuntimeError;
 import Lox.Scanner.Token;
+import Lox.Scanner.TokenType;
 import Lox.Utils.Utils;
 
 import java.util.List;
@@ -102,8 +103,14 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
-    public Object visitLogicalExpr(Expr expr) {
-        return null;
+    public Object visitLogicalExpr(Logical expr) {
+        Object left = evaluate(expr.left);
+        if (expr.operator.type == TokenType.OR) {
+            if (isTruthy(left)) return left;
+        } else {
+            if (!isTruthy(left)) return left;
+        }
+        return evaluate(expr.right);
     }
 
     @Override
@@ -192,6 +199,11 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitIfStmt(If stmt) {
+        if (isTruthy(evaluate(stmt.condition))) {
+            execute(stmt.thenBranch);
+        } else if (stmt.elseBranch != null) {
+            execute(stmt.elseBranch);
+        }
         return null;
     }
 
