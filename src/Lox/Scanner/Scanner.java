@@ -1,5 +1,6 @@
 package Lox.Scanner;
 
+import Lox.Error.Error;
 import Lox.Lox;
 
 import java.util.ArrayList;
@@ -121,7 +122,7 @@ public class Scanner {
                 } else if (isAlpha(c)) {
                     identifier();
                 } else {
-                    Lox.error(line, "Unexpected character.");
+                    Error.error(line, "Unexpected character.");
                 }
                 break;
         }
@@ -172,7 +173,7 @@ public class Scanner {
             advance();
         }
         if (isAtEnd()) {
-            Lox.error(line, "Unterminated string.");
+            Error.error(line, "Unterminated string.");
             return;
         }
         // The closing ".

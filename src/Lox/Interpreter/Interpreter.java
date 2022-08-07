@@ -1,15 +1,15 @@
 package Lox.Interpreter;
 
 import Lox.AST.EXPRESSION.*;
-import Lox.AST.STATEMENT.*;
 import Lox.AST.STATEMENT.Class;
+import Lox.AST.STATEMENT.*;
 import Lox.Enviroment.Environment;
 import Lox.Error.RuntimeError;
-import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
-import Lox.Utils.Utils;
 
 import java.util.List;
+
+import static Lox.Utils.Utils.*;
 
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
@@ -21,7 +21,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
                 execute(statement);
             }
         } catch (RuntimeError error) {
-            Lox.Lox.runtimeError(error);
+            RuntimeError.runtimeError(error);
         }
     }
 
@@ -151,29 +151,6 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         return expr.accept(this);
     }
 
-    private boolean isTruthy(Object object) {
-        if (object == null) return false;
-        if (object instanceof Boolean) return (boolean) object;
-        return true;
-    }
-
-    private boolean isEqual(Object a, Object b) {
-        if (a == null && b == null) return true;
-        if (a == null) return false;
-        return a.equals(b);
-    }
-
-    private void checkNumberOperand(Token operator, Object operand) {
-        if (operand instanceof Double) return;
-        throw new RuntimeError(operator, "Operand must be a number.");
-    }
-
-    private void checkNumberOperands(Token operator, Object left, Object right) {
-        if (left instanceof Double && right instanceof Double) return;
-
-        throw new RuntimeError(operator, "Operands must be numbers.");
-    }
-
     // interpret statments
     @Override
     public Void visitBlockStmt(Block stmt) {
@@ -210,7 +187,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     @Override
     public Void visitPrintStmt(Print stmt) {
         Object value = evaluate(stmt.expression);
-        System.out.println(Utils.stringify(value));
+        System.out.println(stringify(value));
         return null;
     }
 

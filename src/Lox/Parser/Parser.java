@@ -3,6 +3,7 @@ package Lox.Parser;
 import Lox.AST.EXPRESSION.*;
 import Lox.AST.STATEMENT.*;
 import Lox.AST.STATEMENT.Stmt;
+import Lox.Error.Error;
 import Lox.Lox;
 import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
@@ -231,7 +232,7 @@ public class Parser {
     }
 
     private ParseError error(Token token, String message) {
-        Lox.error(token, message);
+        Error.error(token, message);
         return new ParseError();
     }
 
