@@ -55,7 +55,16 @@ public class Parser {
         if (match(PRINT)) return printStatement();
         if (match(LEFT_BRACE)) return new Block(block());
         if (match(IF)) return ifStatement();
+        if (match(WHILE)) return whileStatement();
         return expressionStatement();
+    }
+
+    private Stmt whileStatement() {
+        consume(LEFT_PAREN, "Expect '(' after 'while'.");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "Expect ')' after condition.");
+        Stmt body = statement();
+        return new While(condition, body);
     }
 
     private Stmt ifStatement() {

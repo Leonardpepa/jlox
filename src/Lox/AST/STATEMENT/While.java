@@ -3,10 +3,10 @@ package Lox.AST.STATEMENT;
 import Lox.AST.EXPRESSION.Expr;
 
 public class While extends Stmt {
-    final Expr condition;
-    final Stmt body;
+    public final Expr condition;
+    public final Stmt body;
 
-    While(Expr condition, Stmt body) {
+    public While(Expr condition, Stmt body) {
         this.condition = condition;
         this.body = body;
     }
