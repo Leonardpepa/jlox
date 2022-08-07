@@ -1,4 +1,4 @@
-package Lox.AST.Statments;
+package Lox.AST.STATEMENT;
 
 import Lox.AST.EXPRESSION.Expr;
 import Lox.Scanner.Token;

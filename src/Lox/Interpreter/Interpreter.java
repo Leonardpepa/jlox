@@ -1,8 +1,8 @@
 package Lox.Interpreter;
 
 import Lox.AST.EXPRESSION.*;
-import Lox.AST.Statments.*;
-import Lox.AST.Statments.Class;
+import Lox.AST.STATEMENT.*;
+import Lox.AST.STATEMENT.Class;
 import Lox.Enviroment.Environment;
 import Lox.Error.RuntimeError;
 import Lox.Scanner.Token;

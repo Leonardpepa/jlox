@@ -1,7 +1,6 @@
 package Lox;
 
-import Lox.AST.EXPRESSION.Expr;
-import Lox.AST.Statments.Stmt;
+import Lox.AST.STATEMENT.Stmt;
 import Lox.Error.RuntimeError;
 import Lox.Interpreter.Interpreter;
 import Lox.Parser.Parser;

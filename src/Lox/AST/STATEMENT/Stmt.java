@@ -1,4 +1,4 @@
-package Lox.AST.Statments;
+package Lox.AST.STATEMENT;
 
 public abstract class Stmt {
     public abstract <R> R accept(Visitor<R> visitor);
