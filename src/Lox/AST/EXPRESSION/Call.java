@@ -5,11 +5,11 @@ import Lox.Scanner.Token;
 import java.util.List;
 
 public class Call extends Expr {
-    final Expr callee;
-    final Token paren;
-    final List<Expr> arguments;
+    public final Expr callee;
+    public final Token paren;
+    public final List<Expr> arguments;
 
-    Call(Expr callee, Token paren, List<Expr> arguments) {
+    public Call(Expr callee, Token paren, List<Expr> arguments) {
         this.callee = callee;
         this.paren = paren;
         this.arguments = arguments;
