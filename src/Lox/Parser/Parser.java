@@ -4,6 +4,7 @@ import Lox.AST.EXPRESSION.*;
 import Lox.AST.STATEMENT.*;
 import Lox.AST.STATEMENT.Stmt;
 import Lox.Error.Error;
+import Lox.Error.ParseError;
 import Lox.Lox;
 import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
@@ -11,10 +12,11 @@ import Lox.Scanner.TokenType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Lox.Error.ParseError.error;
 import static Lox.Scanner.TokenType.*;
 
 public class Parser {
-    private static class ParseError extends RuntimeException {}
+
     private final List<Token> tokens;
     private int current = 0;
     public Parser(List<Token> tokens) {
@@ -231,10 +233,6 @@ public class Parser {
         return tokens.get(current - 1);
     }
 
-    private ParseError error(Token token, String message) {
-        Error.error(token, message);
-        return new ParseError();
-    }
 
     private void synchronize() {
         advance();
