@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="JLOX:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2a2f3d31-ce49-4c2e-8734-7cae4e441567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lox/Enviroment/ReturnVal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/AST/STATEMENT/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/AST/STATEMENT/Return.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/Enviroment/LoxFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Enviroment/LoxFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/Interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Interpreter/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lox/Parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Parser/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,23 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="Lox.AST.Statments" />
       <recent name="Lox.AST.EXPRESSION" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR Application.JLOX.jar">
+  <component name="RunManager" selected="Application.Lox">
     <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lox.Lox" />
       <module name="JLOX" />
@@ -65,8 +74,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.JLOX.jar" />
         <item itemvalue="Application.Lox" />
+        <item itemvalue="JAR Application.JLOX.jar" />
       </list>
     </recent_temporary>
   </component>

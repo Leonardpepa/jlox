@@ -6,6 +6,7 @@ import Lox.AST.STATEMENT.*;
 import Lox.Enviroment.Environment;
 import Lox.Enviroment.LoxCallable;
 import Lox.Enviroment.LoxFunction;
+import Lox.Enviroment.ReturnVal;
 import Lox.Error.RuntimeError;
 import Lox.Scanner.TokenType;
 
@@ -21,14 +22,19 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     public Interpreter() {
         globals.define("clock", new LoxCallable() {
             @Override
-            public int arity() { return 0; }
-            @Override
-            public Object call(Interpreter interpreter,
-                               List<Object> arguments) {
-                return (double)System.currentTimeMillis() / 1000.0;
+            public int arity() {
+                return 0;
             }
+
             @Override
-            public String toString() { return "<native fn>"; }
+            public Object call(Interpreter interpreter, List<Object> arguments) {
+                return (double) System.currentTimeMillis() / 1000.0;
+            }
+
+            @Override
+            public String toString() {
+                return "<native fn>";
+            }
         });
     }
 
@@ -106,17 +112,12 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         for (Expr argument : expr.arguments) {
             arguments.add(evaluate(argument));
         }
-        if (!(callee instanceof LoxCallable)) {
-            throw new RuntimeError(expr.paren,
-                    "Can only call functions and classes.");
+        if (!(callee instanceof LoxCallable function)) {
+            throw new RuntimeError(expr.paren, "Can only call functions and classes.");
         }
 
-        LoxCallable function = (LoxCallable)callee;
-
         if (arguments.size() != function.arity()) {
-            throw new RuntimeError(expr.paren, "Expected " +
-                    function.arity() + " arguments but got " +
-                    arguments.size() + ".");
+            throw new RuntimeError(expr.paren, "Expected " + function.arity() + " arguments but got " + arguments.size() + ".");
         }
 
         return function.call(this, arguments);
@@ -230,8 +231,11 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitReturnStmt(Return stmt) {
-        return null;
+        Object value = null;
+        if (stmt.value != null) value = evaluate(stmt.value);
+        throw new ReturnVal(value);
     }
+
 
     @Override
     public Void visitVarStmt(Var stmt) {
@@ -255,8 +259,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         stmt.accept(this);
     }
 
-    public void executeBlock(List<Stmt> statements,
-                             Environment environment) {
+    public void executeBlock(List<Stmt> statements, Environment environment) {
         Environment previous = this.environment;
         try {
             this.environment = environment;

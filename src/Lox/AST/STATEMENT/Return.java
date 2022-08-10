@@ -5,9 +5,9 @@ import Lox.Scanner.Token;
 
 public class Return extends Stmt {
     final Token keyword;
-    final Expr value;
+    public final Expr value;
 
-    Return(Token keyword, Expr value) {
+    public Return(Token keyword, Expr value) {
         this.keyword = keyword;
         this.value = value;
     }
