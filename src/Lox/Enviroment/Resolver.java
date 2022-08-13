@@ -4,6 +4,7 @@ import Lox.AST.EXPRESSION.*;
 import Lox.AST.STATEMENT.*;
 import Lox.AST.STATEMENT.Class;
 import Lox.Interpreter.Interpreter;
+import Lox.Scanner.Token;
 
 import java.util.HashMap;
 import java.util.List;
@@ -118,6 +119,11 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitVarStmt(Var stmt) {
+        declare(stmt.name);
+        if (stmt.initializer != null) {
+            resolve(stmt.initializer);
+        }
+        define(stmt.name);
         return null;
     }
 
@@ -144,4 +150,15 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     private void resolve(Expr expr) {
         expr.accept(this);
     }
+
+    private void declare(Token name) {
+        if (scopes.isEmpty()) return;
+        Map<String, Boolean> scope = scopes.peek();
+        scope.put(name.lexeme, false);
+    }
+    private void define(Token name) {
+        if (scopes.isEmpty()) return;
+        scopes.peek().put(name.lexeme, true);
+    }
+
 }
