@@ -5,7 +5,14 @@ import Lox.AST.STATEMENT.*;
 import Lox.AST.STATEMENT.Class;
 import Lox.Interpreter.Interpreter;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
 public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
+
+    private final Stack<Map<String, Boolean>> scopes = new Stack<>();
     private final Interpreter interpreter;
     public Resolver(Interpreter interpreter) {
         this.interpreter = interpreter;
@@ -73,6 +80,9 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitBlockStmt(Block stmt) {
+        beginScope();
+        resolve(stmt.statements);
+        endScope();
         return null;
     }
 
@@ -114,5 +124,24 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     @Override
     public Void visitWhileStmt(While stmt) {
         return null;
+    }
+
+    private void beginScope() {
+        scopes.push(new HashMap<String, Boolean>());
+    }
+    private void endScope() {
+        scopes.pop();
+    }
+    void resolve(List<Stmt> statements) {
+        for (Stmt statement : statements) {
+            resolve(statement);
+        }
+    }
+    private void resolve(Stmt stmt) {
+        stmt.accept(this);
+    }
+
+    private void resolve(Expr expr) {
+        expr.accept(this);
     }
 }
