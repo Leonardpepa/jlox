@@ -270,4 +270,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
             this.environment = previous;
         }
     }
+
+    public void resolve(Expr expr, int i) {
+    }
 }

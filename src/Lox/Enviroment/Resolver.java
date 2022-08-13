@@ -3,6 +3,7 @@ package Lox.Enviroment;
 import Lox.AST.EXPRESSION.*;
 import Lox.AST.STATEMENT.*;
 import Lox.AST.STATEMENT.Class;
+import Lox.Error.Error;
 import Lox.Interpreter.Interpreter;
 import Lox.Scanner.Token;
 
@@ -21,16 +22,24 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitAssignExpr(Assign expr) {
+        resolve(expr.value);
+        resolveLocal(expr, expr.name);
         return null;
     }
 
     @Override
     public Void visitBinaryExpr(Binary expr) {
+        resolve(expr.left);
+        resolve(expr.right);
         return null;
     }
 
     @Override
     public Void visitCallExpr(Call expr) {
+        resolve(expr.callee);
+        for (Expr argument : expr.arguments) {
+            resolve(argument);
+        }
         return null;
     }
 
@@ -41,6 +50,7 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitGroupingExpr(Grouping expr) {
+        resolve(expr.expression);
         return null;
     }
 
@@ -51,6 +61,8 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitLogicalExpr(Logical expr) {
+        resolve(expr.left);
+        resolve(expr.right);
         return null;
     }
 
@@ -71,11 +83,18 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitUnaryExpr(Unary expr) {
+        resolve(expr.right);
         return null;
     }
 
     @Override
     public Void visitVariableExpr(Variable expr) {
+        if (!scopes.isEmpty() &&
+                scopes.peek().get(expr.name.lexeme) == Boolean.FALSE) {
+            Error.error(expr.name,
+                    "Can't read local variable in its own initializer.");
+        }
+        resolveLocal(expr, expr.name);
         return null;
     }
 
@@ -94,26 +113,37 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitExpressionStmt(Expression stmt) {
+        resolve(stmt.expression);
         return null;
     }
 
     @Override
     public Void visitFunctionStmt(Function stmt) {
+        declare(stmt.name);
+        define(stmt.name);
+        resolveFunction(stmt);
         return null;
     }
 
     @Override
     public Void visitIfStmt(If stmt) {
+        resolve(stmt.condition);
+        resolve(stmt.thenBranch);
+        if (stmt.elseBranch != null) resolve(stmt.elseBranch);
         return null;
     }
 
     @Override
     public Void visitPrintStmt(Print stmt) {
+        resolve(stmt.expression);
         return null;
     }
 
     @Override
     public Void visitReturnStmt(Return stmt) {
+        if (stmt.value != null) {
+            resolve(stmt.value);
+        }
         return null;
     }
 
@@ -129,6 +159,8 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitWhileStmt(While stmt) {
+        resolve(stmt.condition);
+        resolve(stmt.body);
         return null;
     }
 
@@ -159,6 +191,26 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     private void define(Token name) {
         if (scopes.isEmpty()) return;
         scopes.peek().put(name.lexeme, true);
+    }
+
+    private void resolveLocal(Expr expr, Token name) {
+        for (int i = scopes.size() - 1; i >= 0; i--) {
+            if (scopes.get(i).containsKey(name.lexeme)) {
+                interpreter.resolve(expr, scopes.size() - 1 - i);
+                return;
+            }
+        }
+    }
+
+
+    private void resolveFunction(Function function) {
+        beginScope();
+        for (Token param : function.params) {
+            declare(param);
+            define(param);
+        }
+        resolve(function.body);
+        endScope();
     }
 
 }
