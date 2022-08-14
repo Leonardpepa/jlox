@@ -8,16 +8,20 @@ import Lox.Enviroment.LoxCallable;
 import Lox.Enviroment.LoxFunction;
 import Lox.Enviroment.ReturnVal;
 import Lox.Error.RuntimeError;
+import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static Lox.Utils.Utils.*;
 
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     private Environment environment = globals;
+    private final Map<Expr, Integer> locals = new HashMap<>();
 
     public Interpreter() {
         globals.define("clock", new LoxCallable() {
@@ -38,6 +42,11 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         });
     }
 
+    public void resolve(Expr expr, int depth) {
+        locals.put(expr, depth);
+    }
+
+
     public void interpret(List<Stmt> statements) {
         try {
             for (Stmt statement : statements) {
@@ -51,9 +60,16 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     @Override
     public Object visitAssignExpr(Assign expr) {
         Object value = evaluate(expr.value);
-        environment.assign(expr.name, value);
+        Integer distance = locals.get(expr);
+        if (distance != null) {
+            environment.assignAt(distance, expr.name, value);
+        } else {
+            globals.assign(expr.name, value);
+        }
         return value;
     }
+
+
 
     @Override
     public Object visitBinaryExpr(Binary expr) {
@@ -180,7 +196,16 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Object visitVariableExpr(Variable expr) {
-        return environment.get(expr.name);
+        return lookUpVariable(expr.name, expr);
+    }
+
+    private Object lookUpVariable(Token name, Expr expr) {
+        Integer distance = locals.get(expr);
+        if (distance != null) {
+            return environment.getAt(distance, name.lexeme);
+        } else {
+            return globals.get(name);
+        }
     }
 
     private Object evaluate(Expr expr) {
@@ -271,6 +296,4 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         }
     }
 
-    public void resolve(Expr expr, int i) {
-    }
 }

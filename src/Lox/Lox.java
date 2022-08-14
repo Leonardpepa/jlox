@@ -1,6 +1,7 @@
 package Lox;
 
 import Lox.AST.STATEMENT.Stmt;
+import Lox.Enviroment.Resolver;
 import Lox.Interpreter.Interpreter;
 import Lox.Parser.Parser;
 import Lox.Scanner.Scanner;
@@ -59,6 +60,10 @@ public class Lox {
         List<Stmt> statements = parser.parse();
         // Stop if there was a syntax error.
         if (hadError) return;
+
+        Resolver resolver = new Resolver(interpreter);
+        resolver.resolve(statements);
+
         interpreter.interpret(statements);
     }
 

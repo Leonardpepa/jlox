@@ -170,7 +170,7 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     private void endScope() {
         scopes.pop();
     }
-    void resolve(List<Stmt> statements) {
+    public void resolve(List<Stmt> statements) {
         for (Stmt statement : statements) {
             resolve(statement);
         }
@@ -186,6 +186,10 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     private void declare(Token name) {
         if (scopes.isEmpty()) return;
         Map<String, Boolean> scope = scopes.peek();
+        if (scope.containsKey(name.lexeme)) {
+            Error.error(name,
+                    "Already variable with this name in this scope.");
+        }
         scope.put(name.lexeme, false);
     }
     private void define(Token name) {
