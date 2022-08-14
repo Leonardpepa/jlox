@@ -4,7 +4,7 @@ import Lox.AST.EXPRESSION.Expr;
 import Lox.Scanner.Token;
 
 public class Return extends Stmt {
-    final Token keyword;
+    public final Token keyword;
     public final Expr value;
 
     public Return(Token keyword, Expr value) {
