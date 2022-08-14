@@ -10,6 +10,7 @@ import Lox.Enviroment.ReturnVal;
 import Lox.Error.RuntimeError;
 import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
+import Lox.Utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,9 +80,9 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
             case MINUS:
                 return (double) left - (double) right;
             case SLASH:
-//                if((double) right == 0){
-//                    throw new RuntimeError(expr.operator, "Runtime Error | Division by 0");
-//                }
+                if((double) right == 0){
+                    throw new RuntimeError(expr.operator, "Runtime Error | Division by 0");
+                }
                 return (double) left / (double) right;
             case STAR:
                 return (double) left * (double) right;
@@ -92,11 +93,9 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
                 if (left instanceof String && right instanceof String) {
                     return left + (String) right;
                 }
-//                if (left instanceof String || right instanceof String){
-//                    if (left.toString().endsWith(".0")) left = left.toString().substring(0, left.toString().length() - 2);
-//                    if (right.toString().endsWith(".0")) right = right.toString().substring(0, right.toString().length() - 2);
-//                    return left.toString().concat(right.toString());
-//                }
+                if (left instanceof String || right instanceof String){
+                    return stringify(left).concat(stringify(right));
+                }
                 throw new RuntimeError(expr.operator, "Operands must be two numbers or two strings.");
                 // comparison
             case GREATER:
