@@ -1,0 +1,7 @@
+var name = "leonard";
+
+fun sayHello(name){
+    print "hello" + " " + name;
+}
+
+sayHello("leonard");
