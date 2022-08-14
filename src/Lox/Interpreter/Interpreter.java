@@ -10,7 +10,6 @@ import Lox.Enviroment.ReturnVal;
 import Lox.Error.RuntimeError;
 import Lox.Scanner.Token;
 import Lox.Scanner.TokenType;
-import Lox.Utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

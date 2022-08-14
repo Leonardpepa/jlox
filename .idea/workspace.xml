@@ -8,7 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2a2f3d31-ce49-4c2e-8734-7cae4e441567" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JLOX.jar" beforeDir="false" afterPath="$PROJECT_DIR$/JLOX.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lox/Interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lox/Interpreter/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/counter.lox" beforeDir="false" afterPath="$PROJECT_DIR$/tests/counter.lox" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/loops.lox" beforeDir="false" afterPath="$PROJECT_DIR$/tests/loops.lox" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

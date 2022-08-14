@@ -11,10 +11,11 @@ fun makeCounter(){
 
 var counter1 = makeCounter();
 var counter2 = makeCounter();
-
+print "first counter: ";
 counter1();
 counter1();
 
+print "second counter: ";
 counter2();
 counter2();
 
