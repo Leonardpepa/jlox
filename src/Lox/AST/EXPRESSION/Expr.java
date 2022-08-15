@@ -21,7 +21,7 @@ public abstract class Expr {
 
         R visitLogicalExpr(Logical expr);
 
-        R visitSetExpr(Expr expr);
+        R visitSetExpr(Set expr);
 
         R visitSuperExpr(Super expr);
 

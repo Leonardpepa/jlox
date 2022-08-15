@@ -2,8 +2,8 @@ package Lox.AST.EXPRESSION;
 
 import Lox.Scanner.Token;
 
-class Set extends Expr {
-    Set(Expr object, Token name, Expr value) {
+public class Set extends Expr {
+    public Set(Expr object, Token name, Expr value) {
         this.object = object;
         this.name = name;
         this.value = value;
@@ -14,7 +14,7 @@ class Set extends Expr {
         return visitor.visitSetExpr(this);
     }
 
-    final Expr object;
-    final Token name;
-    final Expr value;
+    public final Expr object;
+    public final Token name;
+    public final Expr value;
 }

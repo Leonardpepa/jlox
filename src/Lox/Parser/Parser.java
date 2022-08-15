@@ -2,6 +2,7 @@ package Lox.Parser;
 
 import Lox.AST.EXPRESSION.*;
 import Lox.AST.STATEMENT.*;
+import Lox.AST.STATEMENT.Class;
 import Lox.AST.STATEMENT.Stmt;
 import Lox.Error.Error;
 import Lox.Error.ParseError;
@@ -36,11 +37,23 @@ public class Parser {
         try {
             if (match(VAR)) return varDeclaration();
             if (match(FUN)) return function("function");
+            if (match(CLASS)) return classDeclaration();
             return statement();
         } catch (ParseError error) {
             synchronize();
             return null;
         }
+    }
+
+    private Stmt classDeclaration() {
+        Token name = consume(IDENTIFIER, "Expect class name.");
+        consume(LEFT_BRACE, "Expect '{' before class body.");
+        List<Function> methods = new ArrayList<>();
+        while (!check(RIGHT_BRACE) && !isAtEnd()) {
+            methods.add(function("method"));
+        }
+        consume(RIGHT_BRACE, "Expect '}' after class body.");
+        return new Class(name,null, methods);
     }
     private Function function(String kind) {
         Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
@@ -185,6 +198,9 @@ public class Parser {
             if (expr instanceof Variable) {
                 Token name = ((Variable)expr).name;
                 return new Assign(name, value);
+            }else if (expr instanceof Get) {
+                Get get = (Get)expr;
+                return new Set(get.object, get.name, value);
             }
             error(equals, "Invalid assignment target.");
         }
@@ -265,6 +281,10 @@ public class Parser {
         while (true) {
             if (match(LEFT_PAREN)) {
                 expr = finishCall(expr);
+            } else if (match(DOT)) {
+                Token name = consume(IDENTIFIER,
+                        "Expect property name after '.'.");
+                expr = new Get(expr, name);
             } else {
                 break;
             }

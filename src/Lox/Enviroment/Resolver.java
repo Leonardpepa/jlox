@@ -51,6 +51,7 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitGetExpr(Get expr) {
+        resolve(expr.object);
         return null;
     }
 
@@ -73,7 +74,9 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     }
 
     @Override
-    public Void visitSetExpr(Expr expr) {
+    public Void visitSetExpr(Set expr) {
+        resolve(expr.value);
+        resolve(expr.object);
         return null;
     }
 
@@ -114,6 +117,8 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitClassStmt(Class stmt) {
+        declare(stmt.name);
+        define(stmt.name);
         return null;
     }
 

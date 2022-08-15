@@ -6,11 +6,11 @@ import Lox.Scanner.Token;
 import java.util.List;
 
 public class Class extends Stmt {
-    final Token name;
-    final Variable superclass;
-    final List<Function> methods;
+    public final Token name;
+    public final Variable superclass;
+    public final List<Function> methods;
 
-    Class(Token name, Variable superclass, List<Function> methods) {
+    public Class(Token name, Variable superclass, List<Function> methods) {
         this.name = name;
         this.superclass = superclass;
         this.methods = methods;
