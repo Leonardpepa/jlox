@@ -3,9 +3,9 @@ package Lox.AST.EXPRESSION;
 import Lox.Scanner.Token;
 
 public class This extends Expr {
-    final Token keyword;
+    public final Token keyword;
 
-    This(Token keyword) {
+    public This(Token keyword) {
         this.keyword = keyword;
     }
 

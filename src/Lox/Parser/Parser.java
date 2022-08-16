@@ -314,6 +314,7 @@ public class Parser {
         if (match(NUMBER, STRING)) {
             return new Literal(previous().literal);
         }
+        if (match(THIS)) return new This(previous());
         if (match(IDENTIFIER)) {
             return new Variable(previous());
         }

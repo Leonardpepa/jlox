@@ -186,7 +186,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Object visitThisExpr(This expr) {
-        return null;
+        return lookUpVariable(expr.keyword, expr);
     }
 
     @Override
