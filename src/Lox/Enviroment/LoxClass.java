@@ -4,11 +4,15 @@ package Lox.Enviroment;
 import Lox.Interpreter.Interpreter;
 
 import java.util.List;
+import java.util.Map;
 
 public class LoxClass implements LoxCallable{
     public final String name;
-    public LoxClass(String name) {
+    private final Map<String, LoxFunction> methods;
+
+    public LoxClass(String name, Map<String, LoxFunction> methods) {
         this.name = name;
+        this.methods = methods;
     }
 
     @Override
@@ -16,6 +20,12 @@ public class LoxClass implements LoxCallable{
                        List<Object> arguments) {
         LoxInstance instance = new LoxInstance(this);
         return instance;
+    }
+    public LoxFunction findMethod(String name) {
+        if (methods.containsKey(name)) {
+            return methods.get(name);
+        }
+        return null;
     }
     @Override
     public int arity() {
