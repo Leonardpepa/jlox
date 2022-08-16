@@ -47,13 +47,18 @@ public class Parser {
 
     private Stmt classDeclaration() {
         Token name = consume(IDENTIFIER, "Expect class name.");
+        Variable superclass = null;
+        if (match(LESS)) {
+            consume(IDENTIFIER, "Expect superclass name.");
+            superclass = new Variable(previous());
+        }
         consume(LEFT_BRACE, "Expect '{' before class body.");
         List<Function> methods = new ArrayList<>();
         while (!check(RIGHT_BRACE) && !isAtEnd()) {
             methods.add(function("method"));
         }
         consume(RIGHT_BRACE, "Expect '}' after class body.");
-        return new Class(name,null, methods);
+        return new Class(name,superclass, methods);
     }
     private Function function(String kind) {
         Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
