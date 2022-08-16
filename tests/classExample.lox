@@ -1,0 +1,18 @@
+class Breakfast {
+    init(name){
+        this.name = name;
+    }
+    cook() {
+        print this.name + " needs to learn how to cook";
+    }
+
+    serve(who) {
+        print "Enjoy your breakfast, " + who + ".";
+    }
+}
+
+
+var b = Breakfast("leonard");
+
+b.cook();
+b.serve("leonard");

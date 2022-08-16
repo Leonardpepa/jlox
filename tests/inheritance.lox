@@ -1,0 +1,15 @@
+class Animal {
+    makeNoise(){
+        print "animal noise";
+    }
+}
+
+class Dog < Animal {
+    makeNoise(){
+        super.makeNoise();
+        print "woof woof";
+    }
+}
+
+var dog = Dog();
+dog.makeNoise();
