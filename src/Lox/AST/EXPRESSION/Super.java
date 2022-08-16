@@ -3,10 +3,10 @@ package Lox.AST.EXPRESSION;
 import Lox.Scanner.Token;
 
 public class Super extends Expr {
-    final Token keyword;
-    final Token method;
+    public final Token keyword;
+    public final Token method;
 
-    Super(Token keyword, Token method) {
+    public Super(Token keyword, Token method) {
         this.keyword = keyword;
         this.method = method;
     }
