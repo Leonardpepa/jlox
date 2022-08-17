@@ -73,14 +73,14 @@ fun makeCounter(){
         c = c + 1;
         print c;
     }
+    return counter;
 }
 
-var couter1 = makeCouner();
-var couter2 = makeCouner();
+var counter1 = makeCounter();
+var counter2 = makeCounter();
 
 counter1(); // 1
 counter2(); // 1
-
 ```
 
 ### Classes
@@ -122,7 +122,7 @@ counter2(); // 1
             print this.age;
         }
     }
-    var dog = Dog("doggo");
+    var dog = Dog("doggo", 2);
     print dog;
     dog.makeNoise();
     dog.printDetails();
