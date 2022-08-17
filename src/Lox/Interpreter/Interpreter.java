@@ -16,7 +16,6 @@ import static Lox.Utils.Utils.*;
 import static java.lang.System.in;
 
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
-    Scanner scanner = null;
     private Environment environment = globals;
     private final Map<Expr, Integer> locals = new HashMap<>();
 
@@ -35,37 +34,6 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
             @Override
             public String toString() {
                 return "<native fn>";
-            }
-        });
-        globals.define("readLine", new LoxCallable() {
-            @Override
-            public int arity() {
-                return 0;
-            }
-
-            @Override
-            public Object call(Interpreter interpreter, List<Object> arguments) {
-                if (scanner == null){
-                    scanner = new Scanner(in);
-                }
-                String line = scanner.nextLine();
-                return line;
-            }
-        });
-
-        globals.define("readNumber", new LoxCallable() {
-            @Override
-            public int arity() {
-                return 0;
-            }
-
-            @Override
-            public Object call(Interpreter interpreter, List<Object> arguments) {
-                if (scanner == null){
-                    scanner = new Scanner(in);
-                }
-                Double number = scanner.nextDouble();
-                return number;
             }
         });
     }
